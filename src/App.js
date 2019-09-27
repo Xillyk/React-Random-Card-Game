@@ -16,6 +16,8 @@ class App extends Component {
         <h1 id="label">Random Card Game</h1>
         <WordCard value={words.slice(random, random + 1).join().toUpperCase()} />
         <br></br>
+        <p id="showResult"></p>
+        <p id="showAttemp"></p>
         <button id="newgame" className="button" onClick={this.newGame}>New Game</button>
       </div>
     );
