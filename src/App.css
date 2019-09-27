@@ -63,5 +63,16 @@ body {
 
 .Text {
   text-align: center;
-  font-size: px;
+  font-size: 50px;
+  color: orangered;
+}
+.Text2 {
+  text-align: center;
+  font-size: 45px;
+  color: red;
+}
+.Text3 {
+  text-align: center;
+  font-size: 50px;
+  color: greenyellow;
 }

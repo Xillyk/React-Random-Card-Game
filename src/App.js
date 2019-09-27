@@ -36,14 +36,12 @@ class App extends Component {
     return (
       <div className="App">
         <h1 id="label">Random Card Game</h1>
-        {/* </div>
-      <div className="Text"> */}
         <WordCard value={words.slice(random, random + 1).join().toUpperCase()} />
-        <p id="showUserInput"></p>
-        <p id="showResult"></p>
+        <p className="Text" id="showUserInput"></p>
+        <p className="Text2" id="showResult"></p>
         <p id="showAttempt"></p>
         <p id="showHint"></p>
-        <p id="showAnswer"></p>
+        <p className="Text3" id="showAnswer"></p>
         <button id="newgame" className="button" onClick={this.newGame}>New Game</button>
         <br></br>
         <button className="button" onClick={this.play} > Play </button>
