@@ -22,6 +22,7 @@ class App extends Component {
         <p id="showHint"></p>
         <p id="showAnswer"></p>
         <button id="newgame" className="button" onClick={this.newGame}>New Game</button>
+
       </div>
     );
   }

@@ -34,7 +34,7 @@ export default class WordCard extends
         if (guess.length === this.state.chars.length) {
             console.log(`${guess.join('').toString()} ${this.state.chars.join('').toString()}`)
             if (guess.join('').toString() === this.state.chars.join('').toString()) {
-                this.setState({ guess: [], completed: true })
+                this.setState({ guess: [], completed: true, attempt: this.state.attempt + 1 })
                 console.log("You Win")
                 document.getElementById('showResult').innerHTML = `You win`
                 document.getElementById('showAnswer').innerHTML = `Answer : ${this.state.chars.join("")}`
@@ -42,25 +42,20 @@ export default class WordCard extends
             } else {
                 this.setState({ guess: [], attempt: this.state.attempt + 1 })
                 console.log("Attemp = " + this.state.attempt)
-                document.getElementById('showResult').innerHTML = `You Fail  `
 
-                if (this.state.attempt === 1) {
-                    document.getElementById('showAttempt').innerHTML = `You have tried : ${this.state.attempt} time`
-                }
-                else if (this.state.attempt === 2) {
-                    document.getElementById('showAttempt').innerHTML = `You have tried : ${this.state.attempt} times`
-                }
-                else if (this.state.attempt === 3) {
-                    document.getElementById('showAttempt').innerHTML = `You have tried : ${this.state.attempt} times`
-                    setTimeout(() => window.location.reload(false), 3000)
-                    document.getElementById('showAnswer').innerHTML = `Answer : ${this.state.chars.join("")}`
-                }
+
                 if (this.state.attempt !== 3) {
+                    document.getElementById('showAttempt').innerHTML = `${2 - this.state.attempt} times left !!!`
                     this.state.hints.push(this.state.chars[this.state.attempt - 1])
                     document.getElementById('showHint').innerHTML = `Hint : ${this.state.hints.join("")} `
+                    document.getElementById('showResult').innerHTML = `Try Again  `
                 }
-                else {  
+                else {
                     document.getElementById('showHint').innerHTML = ` `
+                    setTimeout(() => window.location.reload(false), 3000)
+                    document.getElementById('showAnswer').innerHTML = `Answer : ${this.state.chars.join("")}`
+                    document.getElementById('showAttempt').innerHTML = ``
+                    document.getElementById('showResult').innerHTML = `You Fail !!!  `
                 }
 
             }
