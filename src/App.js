@@ -5,15 +5,38 @@ const words = ['asdfg', 'zxcvb', 'asdf', 'qwert'];
 const random = Math.floor(Math.random() * words.length)
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      play: false,
+      pause: true
+    }
+    this.url = "http://www.partyviberadio.com:8000/;listen.pls?sid=1";
+    this.audio = new Audio(this.url);
+  }
+
+  play = () => {
+    this.setState({
+      play: true,
+      pause: false
+    });
+    console.log("play music");
+    this.audio.play();
+  }
+
+  pause = () => {
+    this.setState({ play: false, pause: true });
+    this.audio.pause();
+    console.log("pause music");
+  }
   newGame = () => {
     window.location.reload(false);
   }
-
   render() {
     return (
       <div className="App">
         <h1 id="label">Random Card Game</h1>
-      {/* </div>
+        {/* </div>
       <div className="Text"> */}
         <WordCard value={words.slice(random, random + 1).join().toUpperCase()} />
         <p id="showUserInput"></p>
@@ -22,6 +45,9 @@ class App extends Component {
         <p id="showHint"></p>
         <p id="showAnswer"></p>
         <button id="newgame" className="button" onClick={this.newGame}>New Game</button>
+        <br></br>
+        <button className="button" onClick={this.play} > Play </button>
+        <button className="button" onClick={this.pause} > Pause </button>
       </div>
     );
   }
