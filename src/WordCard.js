@@ -11,6 +11,7 @@ const prepareStateFromWord = (given_word) => {
     return {
         word,
         chars,
+        hints: [],
         attempt: 1,
         guess: [],
         completed: false,
@@ -37,6 +38,7 @@ export default class WordCard extends
                 console.log("You Win")
                 document.getElementById('showResult').innerHTML = `You win`
                 document.getElementById('showAnswer').innerHTML = `Answer : ${this.state.chars.join("")}`
+                setTimeout(() => window.location.reload(false), 3000)
             } else {
                 this.setState({ guess: [], attempt: this.state.attempt + 1 })
                 console.log("Attemp = " + this.state.attempt)
@@ -50,9 +52,17 @@ export default class WordCard extends
                 }
                 else if (this.state.attempt === 3) {
                     document.getElementById('showAttempt').innerHTML = `You have tried : ${this.state.attempt} times`
-                    window.location.reload(false)
+                    setTimeout(() => window.location.reload(false), 3000)
                     document.getElementById('showAnswer').innerHTML = `Answer : ${this.state.chars.join("")}`
                 }
+                if (this.state.attempt !== 3) {
+                    this.state.hints.push(this.state.chars[this.state.attempt - 1])
+                    document.getElementById('showHint').innerHTML = `Hint : ${this.state.hints.join("")} `
+                }
+                else {  
+                    document.getElementById('showHint').innerHTML = ` `
+                }
+
             }
 
 
