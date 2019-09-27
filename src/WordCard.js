@@ -38,6 +38,8 @@ export default class WordCard extends
                 console.log("You Win")
                 document.getElementById('showResult').innerHTML = `You win`
                 document.getElementById('showAnswer').innerHTML = `Answer : ${this.state.chars.join("")}`
+                document.getElementById('showHint').innerHTML = ``
+                document.getElementById('showAttempt').innerHTML = ``
                 setTimeout(() => window.location.reload(false), 3000)
             } else {
                 this.setState({ guess: [], attempt: this.state.attempt + 1 })
@@ -51,7 +53,7 @@ export default class WordCard extends
                     document.getElementById('showResult').innerHTML = `Try Again  `
                 }
                 else {
-                    document.getElementById('showHint').innerHTML = ` `
+                    document.getElementById('showHint').innerHTML = ``
                     setTimeout(() => window.location.reload(false), 3000)
                     document.getElementById('showAnswer').innerHTML = `Answer : ${this.state.chars.join("")}`
                     document.getElementById('showAttempt').innerHTML = ``
